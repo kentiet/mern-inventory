@@ -1,12 +1,12 @@
-import Asset from '../models/asset.model.js'
+import Consumable from '../models/consumable.model.js'
 
 const findAll = (req, res) => {
-  Asset.find({})
+  Consumable.find({})
   .then(
     data => { 
       if(!data) res.send([])
 
-      res.json(data)
+      res.send(data)
     }
   )
   .catch(err => console.error(err))
@@ -15,7 +15,7 @@ const findAll = (req, res) => {
 const getById = (req, res) => {
   const id = req.params.id
 
-  Asset.findById(id)
+  Consumable.findById(id)
   .then(data => {
     res.send(data)
   })
@@ -30,17 +30,15 @@ const create = (req, res) => {
     res.status(500).send({message: `can't be null`})
   }
 
-  const asset = new Asset({
+  const consumable = new Consumable({
     name: req.body.name,
     description: req.body.description,
-    assetNumber: req.body.assetNumber,
+    quantity: req.body.quantity,
     price: req.body.price,
-    custodian: req.body.custodian,
     vendor: req.body.vendor,
-    direction: req.body.direction
   })
   
-  Asset.create(asset)
+  Consumable.create(consumable)
   .then(data => {
     res.send(data)
   })
@@ -52,12 +50,12 @@ const create = (req, res) => {
 const update = (req, res) => {
   const id = req.params.id
 
-  Asset.findByIdAndUpdate(id, req.body, { new: true })
+  Consumable.findByIdAndUpdate(id, req.body, { new: true })
   .then(response => {
     res.send(response)
   })
   .catch(err => { 
-    res.status(500).send({message: `Can't update asset of id: ${id}`})
+    res.status(500).send({message: `Can't update item of id: ${id}`})
     console.error(err);
   })
 }
@@ -65,12 +63,12 @@ const update = (req, res) => {
 const remove = (req, res) => {
   const id = req.params.id
 
-  Asset.findByIdAndDelete(id)
+  Consumable.findByIdAndDelete(id)
   .then(response => {
     res.send(response)
   })
   .catch(err => { 
-    res.status(500).send({message: `Can't delete asset of id: ${id}`})
+    res.status(500).send({message: `Can't delete item of id: ${id}`})
     console.error(err);
   })
 }

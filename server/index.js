@@ -3,6 +3,7 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import db from './helpers/db.js'
 import assetRoutes from './routes/asset.route.js'
+import consumableRoutes from './routes/consumable.route.js'
 
 dotenv.config()
 const app = express()
@@ -25,6 +26,8 @@ db.on('connected', () => {
   })
 
   app.use('/api/v1/assets', assetRoutes)
+  app.use('/api/v1/items', consumableRoutes)
+
   
   app.listen(port, () => {
     console.log(`API is running on ${port}`);
