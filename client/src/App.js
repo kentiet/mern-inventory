@@ -6,6 +6,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import EditAssetForm from './components/EditAssetForm/EditAssetForm';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route path="/assets" exact component={AssetList} />
         <Route path="/assets/create" exact component={AssetForm} />
+        <Route path="/assets/:id/edit" exact render={({ id, handleSubmit }) => <EditAssetForm id={id} handleSubmit={handleSubmit}/> } />
       </Switch>
     </div>
   );

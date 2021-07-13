@@ -1,7 +1,8 @@
 import React from 'react'
 import { Table, Button, Icon } from 'semantic-ui-react'
 
-const Asset = ({ id, name, description, assetNumber, price, custodian, vendor, direction, deleteAsset }) => {
+
+const Asset = ({ id, name, description, assetNumber, price, custodian, vendor, direction, deleteAsset, updateAsset }) => {
     return (
         <>
             <Table.Row>
@@ -13,7 +14,7 @@ const Asset = ({ id, name, description, assetNumber, price, custodian, vendor, d
                 <Table.Cell>{vendor}</Table.Cell>
                 <Table.Cell>{direction}</Table.Cell>
                 <Table.Cell>
-                    <Button basic color='yellow' animated>
+                    <Button basic color='yellow' animated onClick={() => updateAsset(id)}>
                         <Button.Content visible>Edit</Button.Content>
                         <Button.Content hidden>
                             <Icon name='arrow right' />

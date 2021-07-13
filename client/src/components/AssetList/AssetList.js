@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Table, Button } from 'semantic-ui-react'
 import Asset from '../AssetItem/Asset'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 const AssetList = () => {
     const [assetList, setAssetList] = useState([])
@@ -16,17 +16,22 @@ const AssetList = () => {
     }, [])
 
     const deleteAsset = (id) => {
-        console.log(id)
         setAssetList(assetList.filter(asset => asset._id !== id))
 
         fetch('http://localhost:3001/api/v1/assets/' + id, {
             method: 'DELETE'
-        })      
-        .then((data) => {
-            console.log(`Delete the asset with id ${id}`);
-            console.log(data)
         })
-        .catch(err => console.error(err))
+            .then((data) => {
+                console.log(`Delete the asset with id ${id}`);
+                console.log(data)
+            })
+            .catch(err => console.error(err))
+    }
+
+    const updateAsset = (id) => {
+        console.log(id);
+        let url = `/assets/${id}/edit`
+        return (<Redirect to={url} />)
     }
 
     return (
@@ -61,6 +66,7 @@ const AssetList = () => {
                             direction={asset.direction}
                             custodian={asset.custodian}
                             deleteAsset={deleteAsset}
+                            updateAsset={updateAsset}
                         />
                     })}
                 </Table.Body>

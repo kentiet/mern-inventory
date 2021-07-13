@@ -56,7 +56,7 @@ class AssetForm extends Component {
 
   render() {
     const toHome = this.state.redirectToHome
-    console.log(toHome)
+
     if (toHome === true) {
       return (
         <Redirect to='/assets' />
