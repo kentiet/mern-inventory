@@ -1,55 +1,72 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Table, Button } from 'semantic-ui-react'
 import Asset from '../AssetItem/Asset'
+import { Link } from 'react-router-dom'
 
-const AssetList = ({ assets }) => (
-    <div>
-        <table className="table p-4 bg-white shadow rounded-lg">
-            <thead>
-                <tr>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        #
-                    </th>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        Name
-                    </th>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        Description
-                    </th>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        Asset Number
-                    </th>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        Price
-                    </th>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        Custodian
-                    </th>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        Vendor
-                    </th>
-                    <th className="border-b-2 p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
-                        In/Out?
-                    </th>
-                </tr>
-            </thead>
+const AssetList = () => {
+    const [assetList, setAssetList] = useState([])
 
-            <tbody>
-                {assets.map((asset, i) => {
-                    return <Asset
-                        key={i}
-                        name={asset.name}
-                        description={asset.description}
-                        assetNumber={asset.assetNumber}
-                        price={asset.price}
-                        vendor={asset.vendor}
-                        direction={asset.direction}
-                        custodian={asset.custodian}
-                    />
+    useEffect(() => {
+        fetch('http://localhost:3001/api/v1/assets')
+            .then(res => {
+                return res.json()
+            }).then(data => {
+                setAssetList(data)
+            })
+    }, [])
 
-                })}
-            </tbody>
-        </table>
-    </div>
-)
+    const deleteAsset = (id) => {
+        console.log(id)
+        setAssetList(assetList.filter(asset => asset._id !== id))
+
+        fetch('http://localhost:3001/api/v1/assets/' + id, {
+            method: 'DELETE'
+        })      
+        .then((data) => {
+            console.log(`Delete the asset with id ${id}`);
+            console.log(data)
+        })
+        .catch(err => console.error(err))
+    }
+
+    return (
+        <div>
+            <Button basic color='violet'>
+                <Link to="/assets/create"><Button.Content>Create</Button.Content></Link>
+            </Button>
+            <Table basic>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>Name</Table.HeaderCell>
+                        <Table.HeaderCell>Description</Table.HeaderCell>
+                        <Table.HeaderCell>Asset Number</Table.HeaderCell>
+                        <Table.HeaderCell>Price</Table.HeaderCell>
+                        <Table.HeaderCell>Custodian</Table.HeaderCell>
+                        <Table.HeaderCell>Vendor</Table.HeaderCell>
+                        <Table.HeaderCell>In/Out?</Table.HeaderCell>
+                        <Table.HeaderCell></Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+
+                <Table.Body>
+                    {assetList.map((asset, i) => {
+                        return <Asset
+                            key={i}
+                            id={asset._id}
+                            name={asset.name}
+                            description={asset.description}
+                            assetNumber={asset.assetNumber}
+                            price={asset.price}
+                            vendor={asset.vendor}
+                            direction={asset.direction}
+                            custodian={asset.custodian}
+                            deleteAsset={deleteAsset}
+                        />
+                    })}
+                </Table.Body>
+            </Table>
+        </div>
+    )
+}
 
 export default AssetList
