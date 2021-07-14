@@ -5,6 +5,7 @@ import db from './helpers/db.js'
 import assetRoutes from './routes/asset.route.js'
 import consumableRoutes from './routes/consumable.route.js'
 import agentRoutes from './routes/agent.route.js'
+import signUpLoginRoutes from './routes/signUpAndLogin.route.js'
 
 dotenv.config()
 const app = express()
@@ -30,6 +31,7 @@ db.on('connected', () => {
   app.use('/api/v1/assets', assetRoutes)
   app.use('/api/v1/items', consumableRoutes)
   app.use('/api/v1/agents', agentRoutes)
+  app.use('/api/v1/accounts', signUpLoginRoutes)
 
   
   app.listen(port, () => {
