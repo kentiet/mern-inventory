@@ -1,5 +1,4 @@
 import express from 'express'
-import Asset from '../models/asset.model.js'
 import { findAll, getById, create, update, remove } from '../controllers/asset.controller.js'
 
 const assetRoutes = express.Router()
