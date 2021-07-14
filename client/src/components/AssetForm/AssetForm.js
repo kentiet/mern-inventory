@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react'
 
 const AssetForm = (props) => {
@@ -144,9 +144,14 @@ const AssetForm = (props) => {
                 onChange={onChangeHandler}
                 placeholder='Direction' />
             </Form.Field>
-            <Button
-              onClick={handleSubmit}
-              type='submit'>Submit</Button>
+            <Button.Group>
+              <Link to='/assets/'><Button color='red'>Cancel</Button></Link>
+              <Button.Or />
+              <Button
+                positive
+                onClick={handleSubmit}
+                type='submit'>Submit</Button>
+            </Button.Group>
           </Form>
         </div>
       )

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Button, Form } from 'semantic-ui-react'
 
 const ConsumableForm = (props) => {
@@ -130,9 +130,14 @@ const ConsumableForm = (props) => {
           onChange={onChangeHandler}
           placeholder='Vendor' />
       </Form.Field>
-      <Button
-        onClick={handleSubmit}
-        type='submit'>Submit</Button>
+      <Button.Group>
+        <Link to='/items/'><Button color='red'>Cancel</Button></Link>
+        <Button.Or />
+        <Button
+          positive
+          onClick={handleSubmit}
+          type='submit'>Submit</Button>
+      </Button.Group>
     </Form>
   )
 }

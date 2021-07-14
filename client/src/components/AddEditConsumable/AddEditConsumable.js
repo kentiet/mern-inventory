@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Container } from 'semantic-ui-react'
+import { Container, Header, Icon } from 'semantic-ui-react'
 import ConsumableForm from '../ComsumableForm/ConsumableForm'
 
 const AddEditConsumable = () => {
@@ -8,6 +8,10 @@ const AddEditConsumable = () => {
 
   return (
     <Container>
+      <Header as='h3' icon textAlign='center' color='violet'> 
+        <Icon name='upload' circular />
+        <Header.Content>Create Item</Header.Content>
+      </Header>
       <ConsumableForm id={ id }/>
     </Container>
   )
