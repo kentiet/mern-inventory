@@ -26,7 +26,7 @@ class NavBar extends Component {
                         onClick={this.handleItemClick}
                     />
                 </NavLink>
-                <NavLink to="/consumables">
+                <NavLink to="/items">
                     <Menu.Item
                     name='consumable'
                     active={activeItem === 'consumable'}

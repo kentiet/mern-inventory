@@ -19,7 +19,6 @@ const AssetForm = (props) => {
   const [toHome, setToHome] = useState(false)
   const { name, description, assetNumber, price, custodian, vendor, direction } = asset
   const id = props.assetId
-  console.log(id);
 
   useEffect(() => { 
     fetch('http://localhost:3001/api/v1/assets/' + id)
@@ -46,7 +45,7 @@ const AssetForm = (props) => {
       vendor,
       direction: iDirection
     }
-    
+
     if(isEditing) { 
       fetch('http://localhost:3001/api/v1/assets/'+ id, {
         method: 'PUT',
@@ -80,11 +79,10 @@ const AssetForm = (props) => {
 
     if (toHome === true) {
       return (
-        <Redirect to='/' />
+        <Redirect to='/assets' />
       )
     } else {
       return (
-
         <div>
           <Form>
             <Form.Field>
@@ -153,6 +151,6 @@ const AssetForm = (props) => {
         </div>
       )
     }
-  
 }
+
 export default AssetForm

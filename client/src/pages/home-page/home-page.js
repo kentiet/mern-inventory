@@ -5,7 +5,7 @@ import HomeItem from '../../components/HomeItem/HomeItem'
 const Home = () => {
   const items = [
     { name: "Assets", path: '/assets' },
-    { name: "Consumables", path: '/consumables'}
+    { name: "Consumables", path: '/items'}
   ]
   return (
     <Card.Group centered>

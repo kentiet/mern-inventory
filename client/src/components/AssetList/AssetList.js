@@ -33,12 +33,13 @@ const AssetList = () => {
         <Container>
             <h3 style={{ textAlign: 'center'}}><Icon name='tag' />Asset List</h3>
             <Button basic color='teal' animated>
-                <Link to="/assets/create" style={{ color: '#00b5ad'}}><Button.Content visible>Create</Button.Content></Link>
-                <Button.Content hidden>
-                    <Icon name='arrow right' />
-                </Button.Content>
+                <Link to="/assets/create" style={{ color: '#00b5ad'}}><Button.Content visible>Create</Button.Content>
+                    <Button.Content hidden>
+                        <Icon name='arrow right' />
+                    </Button.Content>
+                </Link>
             </Button>
-            <Table basic>
+            <Table color="brown" selectable>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Name</Table.HeaderCell>
