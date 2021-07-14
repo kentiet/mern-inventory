@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Table, Button } from 'semantic-ui-react'
+import { Table, Button, Icon, Container } from 'semantic-ui-react'
 import Asset from '../AssetItem/Asset'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const AssetList = () => {
     const [assetList, setAssetList] = useState([])
@@ -28,16 +28,15 @@ const AssetList = () => {
             .catch(err => console.error(err))
     }
 
-    const updateAsset = (id) => {
-        console.log(id);
-        let url = `/assets/${id}/edit`
-        return (<Redirect to={url} />)
-    }
 
     return (
-        <div>
-            <Button basic color='violet'>
-                <Link to="/assets/create"><Button.Content>Create</Button.Content></Link>
+        <Container>
+            <h3 style={{ textAlign: 'center'}}><Icon name='tag' />Asset List</h3>
+            <Button basic color='teal' animated>
+                <Link to="/assets/create" style={{ color: '#00b5ad'}}><Button.Content visible>Create</Button.Content></Link>
+                <Button.Content hidden>
+                    <Icon name='arrow right' />
+                </Button.Content>
             </Button>
             <Table basic>
                 <Table.Header>
@@ -66,12 +65,11 @@ const AssetList = () => {
                             direction={asset.direction}
                             custodian={asset.custodian}
                             deleteAsset={deleteAsset}
-                            updateAsset={updateAsset}
                         />
                     })}
                 </Table.Body>
             </Table>
-        </div>
+        </Container>
     )
 }
 

@@ -1,5 +1,7 @@
-import React, { Component, useState } from 'react'
+import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
+
 
 class NavBar extends Component {
     state = { activeItem: 'home' }
@@ -9,32 +11,37 @@ class NavBar extends Component {
     render() {
         const { activeItem } = this.state
         return (
-            <div>
-                <Menu pointing secondary>
+            <Menu pointing secondary>
+                <NavLink to="/">
                     <Menu.Item
                         name='home'
                         active={activeItem === 'home'}
                         onClick={this.handleItemClick}
                     />
+                </NavLink>
+                <NavLink to="/assets">
                     <Menu.Item
-                        name='messages'
-                        active={activeItem === 'messages'}
+                        name='asset'
+                        active={activeItem === 'asset'}
                         onClick={this.handleItemClick}
                     />
+                </NavLink>
+                <NavLink to="/consumables">
                     <Menu.Item
-                        name='friends'
-                        active={activeItem === 'friends'}
+                    name='consumable'
+                    active={activeItem === 'consumable'}
+                    onClick={this.handleItemClick}
+                    />
+                </NavLink>
+                
+                <Menu.Menu position='right'>
+                    <Menu.Item
+                        name='logout'
+                        active={activeItem === 'logout'}
                         onClick={this.handleItemClick}
                     />
-                    <Menu.Menu position='right'>
-                        <Menu.Item
-                            name='logout'
-                            active={activeItem === 'logout'}
-                            onClick={this.handleItemClick}
-                        />
-                    </Menu.Menu>
-                </Menu>
-            </div>
+                </Menu.Menu>
+            </Menu>
         )
     }
 
