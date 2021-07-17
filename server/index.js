@@ -5,13 +5,12 @@ import db from './helpers/db.js'
 import assetRoutes from './routes/asset.route.js'
 import consumableRoutes from './routes/consumable.route.js'
 import agentRoutes from './routes/agent.route.js'
-import signUpLoginRoutes from './routes/signUpAndLogin.route.js'
+import passport from 'passport'
 
 dotenv.config()
 const app = express()
 const port = process.env.PORT
 
-// console.log(db)
 
 db.on('error', (err) => {
   console.error(err);
@@ -23,6 +22,7 @@ db.on('connected', () => {
   app.use(cors())
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
+  app.use(passport.initialize())
   
   app.get('/', (req, res) => {
     res.send("Hello from Inventory API")
@@ -31,7 +31,6 @@ db.on('connected', () => {
   app.use('/api/v1/assets', assetRoutes)
   app.use('/api/v1/items', consumableRoutes)
   app.use('/api/v1/agents', agentRoutes)
-  app.use('/api/v1/accounts', signUpLoginRoutes)
 
   
   app.listen(port, () => {

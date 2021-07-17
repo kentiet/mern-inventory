@@ -10,12 +10,14 @@ import {
 import AddEditAsset from './components/AddEditAsset/AddEditAsset';
 import ConsumableList from './components/ConsumableList/ConsumableList';
 import AddEditConsumable from './components/AddEditConsumable/AddEditConsumable';
+import LoginPage from './pages/login-page/login-page';
 
 function App() {
 
   return (
     <div>
       <NavBar />
+      <LoginPage />
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/assets" exact component={AssetList} />

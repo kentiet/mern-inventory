@@ -1,6 +1,58 @@
 import Agent from "../models/agent.model.js"
+import { hashPassword, comparePassword, issueJWT } from '../helpers/passwordUtils.js'
 
+const signUp = (req, res) => {
+  if (!req.body) {
+    console.error({ message: `can't be null` });
+    res.status(500).send({ message: `can't be null` })
+  }
 
+  const saltHash = hashPassword(req.body.password)
+
+  const salt = saltHash.salt
+  const hash = saltHash.hash
+
+  const agent = new Agent({
+    username: req.body.username,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    salt: salt,
+    hash: hash,
+    email: req.body.email,
+    role: req.body.role
+  })
+
+  Agent.create(agent)
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.error(err);
+    })
+}
+
+const logIn = (req, res, next) => {
+  Agent.findOne({ username: req.body.username })
+    .then((agent) => { 
+
+      if(!agent) { 
+        return res.status(401).json({ success: false, msg: "could not find user" })
+      }
+
+      const isValid = comparePassword(req.body.password, agent.hash)
+      console.log('isValid' + isValid);
+      if(isValid) { 
+        const tokenObj = issueJWT(agent)
+
+        res.status(200).json({ success: true, token: tokenObj.token, expiresIn: tokenObj.expires })
+      } else { 
+        res.status(401).json({ success: false, msg: "you entered the wrong password" });
+      }
+    })
+    .catch((err) => {
+      next(err);
+  });
+}
 
 const findAll = (req, res) => {
   Agent.find({})
@@ -25,7 +77,6 @@ const getById = (req, res) => {
       console.error(err);
     })
 }
-
 
 const update = (req, res) => {
   const id = req.params.id
@@ -54,5 +105,5 @@ const remove = (req, res) => {
 }
 
 export {
-  findAll, getById, update, remove
+  findAll, getById, update, remove, signUp, logIn
 }
