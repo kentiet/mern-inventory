@@ -34,13 +34,13 @@ const signUp = (req, res) => {
 const logIn = (req, res, next) => {
   Agent.findOne({ username: req.body.username })
     .then((agent) => { 
-
+      
       if(!agent) { 
         return res.status(401).json({ success: false, msg: "could not find user" })
       }
 
       const isValid = comparePassword(req.body.password, agent.hash)
-      console.log('isValid' + isValid);
+
       if(isValid) { 
         const tokenObj = issueJWT(agent)
 

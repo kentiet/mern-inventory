@@ -24,12 +24,9 @@ const hashPassword = (pwd) => {
 }
 
 const comparePassword = (pwd, hash) => {
-  bcrypt.compare(pwd, hash).then(function(err, result) {
+  return bcrypt.compare(pwd, hash).then((err, result) => {
     if(err) console.error(err);
-    console.log(result)
-    return { 
-      success: result
-    }
+    return result
   });
 } 
 
