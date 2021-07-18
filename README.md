@@ -10,7 +10,7 @@ Build the inventory system API / server using Express.js
   <li>[x] Consumable</li>
   <li>[] Software</li>
   <li>[] Transaction Logs</li>
-  <li>[] Users (admin)</li>
+  <li>[x] Users (admin)</li>
   <li>[] Custodian</li>
 </ol>
 
