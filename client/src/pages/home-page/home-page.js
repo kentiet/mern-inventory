@@ -1,24 +1,35 @@
 import React from 'react'
-import { Card } from 'semantic-ui-react'
+import { Card, Container, Grid } from 'semantic-ui-react'
 import HomeItem from '../../components/HomeItem/HomeItem'
 
-const Home = () => {
+const Home = (props) => {
   const items = [
     { name: "Assets", path: '/assets' },
     { name: "Consumables", path: '/items'}
   ]
+
+  console.log(props);
   return (
-    <Card.Group centered>
-        {
-        items.map((item, i) => { 
-          return <HomeItem 
-            key={ i }
-            itemName = { item.name }
-            path= { item.path }
-          />
-        })
-      }
-    </Card.Group>
+      <Card.Group centered>
+        <Grid>
+          <Grid.Row columns={2}></Grid.Row>
+          <Grid.Row columns={2}>
+              {
+              items.map((item, i) => { 
+                return (
+                <Grid.Column stretched>
+                  <HomeItem 
+                    key={ i }
+                    itemName = { item.name }
+                    path= { item.path }
+                  />
+                </Grid.Column>
+                )
+              })
+            }
+          </Grid.Row>
+        </Grid>
+      </Card.Group>
   )
 }
 

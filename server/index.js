@@ -24,10 +24,6 @@ db.on('connected', () => {
   app.use(express.urlencoded({ extended: true }))
   app.use(passport.initialize())
   
-  app.get('/', (req, res) => {
-    res.send("Hello from Inventory API")
-  })
-
   app.use('/api/v1/assets', assetRoutes)
   app.use('/api/v1/items', consumableRoutes)
   app.use('/api/v1/agents', agentRoutes)

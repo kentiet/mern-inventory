@@ -1,9 +1,9 @@
 import React from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 
-const LoginPage = () => { 
+const LoginPage = (props) => { 
   return (
-    <LoginForm />
+    <LoginForm props={props}/>
   )
 }
 

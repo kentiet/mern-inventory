@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Menu } from 'semantic-ui-react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 
 
 class NavBar extends Component {
@@ -8,11 +8,19 @@ class NavBar extends Component {
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
+    handleLogOut = (e) => {
+        e.preventDefault()
+        localStorage.removeItem('token')
+        localStorage.removeItem('expires');
+
+        <Redirect to={{pathname: "/login"}} />
+    }
+
     render() {
         const { activeItem } = this.state
         return (
             <Menu pointing secondary>
-                <NavLink to="/">
+                <NavLink to="/home">
                     <Menu.Item
                         name='home'
                         active={activeItem === 'home'}
@@ -38,7 +46,7 @@ class NavBar extends Component {
                     <Menu.Item
                         name='logout'
                         active={activeItem === 'logout'}
-                        onClick={this.handleItemClick}
+                        onClick={this.handleLogOut}
                     />
                 </Menu.Menu>
             </Menu>

@@ -43,8 +43,8 @@ const logIn = (req, res, next) => {
 
       if(isValid) { 
         const tokenObj = issueJWT(agent)
-
-        res.status(200).json({ success: true, token: tokenObj.token, expiresIn: tokenObj.expires })
+       
+        res.status(200).json({ success: true, agent: agent, token: tokenObj.token, expiresIn: tokenObj.expires })
       } else { 
         res.status(401).json({ success: false, msg: "you entered the wrong password" });
       }

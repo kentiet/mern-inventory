@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Card } from 'semantic-ui-react'
 
 const HomeItem = ({ itemName, path }) => {
@@ -22,11 +23,13 @@ const HomeItem = ({ itemName, path }) => {
   }, [])
 
   return (
-    <Card
-      color={ pickColor }
-      href={ path }
-      header={ itemName }
-  />
+    <Link to={path}>
+      <Card
+        color={ pickColor }
+        href={ path }
+        header={ itemName }
+      />
+    </Link>
   )
 }
 
