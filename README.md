@@ -14,4 +14,6 @@ Build the inventory system API / server using Express.js
   <li>[] Custodian</li>
 </ol>
 
+Added LDAP from free test server as the custodian of the item and asset (https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server/)
+
 ## DB: MongoDB 
