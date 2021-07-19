@@ -41,6 +41,13 @@ class NavBar extends Component {
                     onClick={this.handleItemClick}
                     />
                 </NavLink>
+                <NavLink to="/transactions">
+                    <Menu.Item
+                    name='transactions'
+                    active={activeItem === 'transactions'}
+                    onClick={this.handleItemClick}
+                    />
+                </NavLink>
                 
                 <Menu.Menu position='right'>
                     <Menu.Item

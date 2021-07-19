@@ -30,7 +30,7 @@ const Consumable = ({ id, name, description, quantity, price, vendor, deleteItem
                             <Button basic color='yellow' animated>
                                 <Link
                                     style={{ textDecorationColor: 'none', textDecoration: 'none' ,color: '#fbbd08'}}
-                                    to={``}
+                                    to={`/transactions/${id}/checkout`}
                                 >
                                     <Button.Content visible>Check out!</Button.Content>
                                     <Button.Content hidden>

@@ -4,17 +4,16 @@ const Schema = mongoose.Schema
 
 const transactionSchema = new Schema({
   agent: { 
-    type: Schema.Types.ObjectId, 
-    ref: 'Agent',
+    type: String,
     required: true
   },
   recipient: { 
     type: String,
     required: true
   },
-  consumables: { 
-    type: Schema.Types.ObjectId,
-    ref: 'Consumable',
+  note: String,
+  consumable: { 
+    type: String,
     required: true
   },
   quantity: { 

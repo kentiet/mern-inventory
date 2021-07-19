@@ -7,6 +7,7 @@ import consumableRoutes from './routes/consumable.route.js'
 import agentRoutes from './routes/agent.route.js'
 import passport from 'passport'
 import transactionRoutes from './routes/transaction.route.js'
+import ldapRoute from './routes/ldap.route.js'
 
 dotenv.config()
 const app = express()
@@ -29,6 +30,7 @@ db.on('connected', () => {
   app.use('/api/v1/items', consumableRoutes)
   app.use('/api/v1/agents', agentRoutes)
   app.use('/api/v1/transactions', transactionRoutes)
+  app.use('/ldap', ldapRoute)
 
   
   app.listen(port, () => {

@@ -34,7 +34,8 @@ const create = (req, res) => {
     agent: req.body.agent,
     recipient: req.body.recipient,
     quantity: req.body.quantity,
-    consumables: req.body.consumables
+    note: req.body.note,
+    consumable: req.body.consumable
   })
   
   Transaction.create(transaction)

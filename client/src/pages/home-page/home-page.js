@@ -8,7 +8,6 @@ const Home = (props) => {
     { name: "Consumables", path: '/items'}
   ]
 
-  console.log(props);
   return (
       <Card.Group centered>
         <Grid>
