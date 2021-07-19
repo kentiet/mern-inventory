@@ -31,7 +31,7 @@ const ConsumableForm = (props) => {
     .catch(err => { 
       console.err(err)
     })
-  }, [])
+  }, [id])
   
 
   const onChangeHandler = (e) => { 

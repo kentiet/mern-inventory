@@ -16,46 +16,6 @@ const Asset = ({ id, name, description, assetNumber, price, custodian, vendor, d
             <Table.Cell>{custodian}</Table.Cell>
             <Table.Cell>{vendor}</Table.Cell>
             <Table.Cell>{direction}</Table.Cell>
-            {/* <Table.Cell>
-            <Grid columns={3} divided>
-                <Grid.Row>
-                    <Grid.Column>
-                        <Button basic color='violet' animated>
-                            <Link
-                                style={{ textDecorationColor: 'none', textDecoration: 'none' ,color: '#6435c9'}}
-                                to={`/assets/${id}/edit`}
-                            >
-                                <Button.Content visible>Edit</Button.Content>
-                                <Button.Content hidden>
-                                    <Icon name='edit outline' />
-                                </Button.Content>
-                            </Link>
-                        </Button>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Button basic color='yellow' animated>
-                            <Link
-                                style={{ textDecorationColor: 'none', textDecoration: 'none' ,color: '#fbbd08'}}
-                                to={`/assets/${id}/checkout`}
-                            >
-                                <Button.Content visible>Check out!</Button.Content>
-                                <Button.Content hidden>
-                                    <Icon name='opencart' />
-                                </Button.Content>
-                            </Link>
-                        </Button>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Button basic color='red' onClick={() => deleteAsset(id)} animated>
-                            <Button.Content visible>Delete</Button.Content>
-                            <Button.Content hidden>
-                                    <Icon name='trash alternate outline' />
-                            </Button.Content>
-                        </Button>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-            </Table.Cell> */}
         </Table.Row>
         )
     } else { 

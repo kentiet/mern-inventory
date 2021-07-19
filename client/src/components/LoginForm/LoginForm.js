@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
-import {Button, Form} from 'semantic-ui-react'
-import { Redirect } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import {Button, Container, Form, Grid, Segment} from 'semantic-ui-react'
+import moment from 'moment'
+import './LoginForm.css'
 
 const LoginForm = (props) => {
   const [loginUser, setLoginUser] = useState({ 
@@ -16,8 +17,22 @@ const LoginForm = (props) => {
 
     setLoginUser({ ...loginUser, 
       [name] : value })
-    console.log(loginUser);
   }
+
+
+  // const getExpirationToken = () => { 
+  //   const expiration = localStorage.getItem('expires')
+  //   const expiresAt = JSON.parse(expiration)
+  //   return moment(expiresAt)
+  // }
+
+  // const isLoggedIn = () => { 
+  //   return moment().isBefore(this.getExpirationToken())
+  // }
+  
+  // const isLoggedOut = () => { 
+  //   return !this.isLoggedIn();
+  // }
 
   const handleLogin = (e) => { 
     
@@ -33,28 +48,44 @@ const LoginForm = (props) => {
     .then((res) => res.json())
     .then(data => {
         const { token, expiresIn } = data
+        const expires = moment().add(expiresIn)
+  
         localStorage.setItem('token', token)
-        localStorage.setItem('expires', expiresIn)
+        localStorage.setItem('expires', expires)
         setLoggedIn(true)
-        console.log(props)
-        props.history.push("/home")
+        window.location.replace('/home')
+        // props.history.push("/home")
     })
     .catch(err => console.error(err))
   }
 
-    return (
-      <Form>
-        <Form.Field>
-          <label>Username</label>
-          <input type='text' name='username' placeholder='Username' onChange={onChangeHandler}/>
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input type='password' name='password' placeholder='password' onChange={onChangeHandler} />
-        </Form.Field>
-        <Button type='submit' onClick={handleLogin}>Login</Button>
-      </Form>
-    )
+  return (
+    <div id='login-wrapper'>
+      <h3 style={{ textAlign: 'center'}}>Login</h3>
+      <Grid columns={3} >
+        <Grid.Row stretched>
+          <Grid.Column>
+          </Grid.Column>
+          <Grid.Column>
+            <Form>
+              <Form.Field>
+                <label>Username</label>
+                <input type='text' name='username' placeholder='Username' onChange={onChangeHandler}/>
+              </Form.Field>
+              <Form.Field>
+                <label>Password</label>
+                <input type='password' name='password' placeholder='password' onChange={onChangeHandler} />
+              </Form.Field>
+              <Button type='submit' onClick={handleLogin}>Login</Button>
+            </Form>
+          </Grid.Column>
+          <Grid.Column></Grid.Column>
+          
+        </Grid.Row>
+      </Grid>
+    </div>
+  )
 }
 
 export default LoginForm
+

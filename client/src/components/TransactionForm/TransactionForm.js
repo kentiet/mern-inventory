@@ -35,7 +35,7 @@ const TransactionForm = () => {
     .then(data => { 
       setSelectedItem(data)
     })
-  }, [])
+  }, [consumableId])
 
   const token = localStorage.getItem('token').split(" ")[1]
   const agentId = jsonwebtoken.decode(token).sub
@@ -45,7 +45,7 @@ const TransactionForm = () => {
     .then(data => {
       setCurrentAgent(data)
     })
-  }, [])
+  }, [agentId])
 
 
   const onChangeHandler = (e) => { 

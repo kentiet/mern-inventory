@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Container, Grid } from 'semantic-ui-react'
+import { Card, Grid } from 'semantic-ui-react'
 import HomeItem from '../../components/HomeItem/HomeItem'
 
 const Home = (props) => {

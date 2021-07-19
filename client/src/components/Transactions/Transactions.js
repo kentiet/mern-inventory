@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Table } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
+
 
 const Transaction = ({ agent, recipient, consumable, quantity, date }) => {
 

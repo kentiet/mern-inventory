@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Header, Icon, Table } from 'semantic-ui-react'
+import { Container, Icon, Table } from 'semantic-ui-react'
 import Transaction from '../Transactions/Transactions'
 
 const TransactionsList = () => { 
