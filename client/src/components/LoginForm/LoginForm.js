@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Button, Form, Grid, Message} from 'semantic-ui-react'
+import {Button, Container, Form, Grid, Header, Message} from 'semantic-ui-react'
 import moment from 'moment'
 import './LoginForm.css'
 
@@ -66,39 +66,44 @@ const LoginForm = (props) => {
   }
 
   return (
-    <div id='login-wrapper'>
-      <h3 style={{ textAlign: 'center'}}>Login</h3>
-      <Grid columns={3} >
-        <Grid.Row stretched>
-          <Grid.Column>
-          </Grid.Column>
-          <Grid.Column>
-            { !validLogin ? 
-              <Message
-                error
-                header='Action Forbidden'
-                content='Login failed. Please check your username and password.'
-              />
-              :
-              <></>
-            } 
-            <Form>
-              <Form.Field>
-                <label>Username</label>
-                <input type='text' name='username' placeholder='Username' onChange={onChangeHandler}/>
-              </Form.Field>
-              <Form.Field>
-                <label>Password</label>
-                <input type='password' name='password' placeholder='password' onChange={onChangeHandler} />
-              </Form.Field>
-              <Button type='submit' onClick={handleLogin}>Login</Button>
-            </Form>
-          </Grid.Column>
-          <Grid.Column></Grid.Column>
-          
-        </Grid.Row>
-      </Grid>
-    </div>
+    <Container>
+      <div className='login-form-header'>
+        <h1 className='login-header'>Inventory Management</h1>
+      </div>
+      <div id='login-wrapper'>
+        <h3 style={{ textAlign: 'center'}}>Login</h3>
+        <Grid columns={3} >
+          <Grid.Row stretched>
+            <Grid.Column>
+            </Grid.Column>
+            <Grid.Column>
+              { !validLogin ? 
+                <Message
+                  error
+                  header='Action Forbidden'
+                  content='Login failed. Please check your username and password.'
+                />
+                :
+                <></>
+              } 
+              <Form>
+                <Form.Field>
+                  <label>Username</label>
+                  <input type='text' name='username' placeholder='Username' onChange={onChangeHandler}/>
+                </Form.Field>
+                <Form.Field>
+                  <label>Password</label>
+                  <input type='password' name='password' placeholder='password' onChange={onChangeHandler} />
+                </Form.Field>
+                <Button type='submit' onClick={handleLogin}>Login</Button>
+              </Form>
+            </Grid.Column>
+            <Grid.Column></Grid.Column>
+            
+          </Grid.Row>
+        </Grid>
+      </div>
+    </Container>
   )
 }
 

@@ -1,5 +1,17 @@
 #login-wrapper { 
   height: auto;
-  margin-top: 20%;
+  margin-top: 10%;
   margin-bottom: auto;
+}
+
+.login-header {
+  font-size: 50px;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color: linear-gradient(319deg, #ff1493 0%, #0000ff 37%, #ff8c00 100%);
+  
+}
+
+.login-form-header {
+  margin-top: 15%;
 }
