@@ -36,7 +36,8 @@ const findAll = (req, res, next) => {
 
     result.on('end', function(response) {
       if(response.status != 0) res.status(404).send("User not found");
-      next(res.json(entries))
+      res.json(entries)
+      next()
     });
   })
 }

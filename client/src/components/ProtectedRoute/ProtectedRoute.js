@@ -1,12 +1,11 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-const ProtectedRoute = ({isAuth, component: Component, ...others}) => {
+const ProtectedRoute = ({isAuth, component: Component, isAdmin, ...others}) => {
   return (
     <Route
       {...others}
       render={(props) => {
-        console.log(isAuth)
         if(isAuth !== null) {
           return <Component />
         } else {

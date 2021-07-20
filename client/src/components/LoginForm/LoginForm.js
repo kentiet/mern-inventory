@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import {Button, Container, Form, Grid, Segment} from 'semantic-ui-react'
+import React, { useState } from 'react'
+import {Button, Form, Grid, Message} from 'semantic-ui-react'
 import moment from 'moment'
 import './LoginForm.css'
 
@@ -9,6 +9,7 @@ const LoginForm = (props) => {
     password: ''
   })
   const [loggedIn, setLoggedIn] = useState(false)
+  const [validLogin, setValidLogin] = useState(true)
 
   const onChangeHandler = e => { 
     e.preventDefault()
@@ -47,14 +48,19 @@ const LoginForm = (props) => {
     })
     .then((res) => res.json())
     .then(data => {
-        const { token, expiresIn } = data
-        const expires = moment().add(expiresIn)
-  
-        localStorage.setItem('token', token)
-        localStorage.setItem('expires', expires)
-        setLoggedIn(true)
-        window.location.replace('/home')
-        // props.history.push("/home")
+        console.log('login data', data);
+        if(data.success) {
+          const { token, expiresIn } = data
+          const expires = moment().add(expiresIn)
+    
+          localStorage.setItem('token', token)
+          localStorage.setItem('expires', expires)
+          setLoggedIn(true)
+          window.location.replace('/home')
+          // props.history.push("/home")
+        } else {
+          setValidLogin(false)
+        }
     })
     .catch(err => console.error(err))
   }
@@ -67,6 +73,15 @@ const LoginForm = (props) => {
           <Grid.Column>
           </Grid.Column>
           <Grid.Column>
+            { !validLogin ? 
+              <Message
+                error
+                header='Action Forbidden'
+                content='Login failed. Please check your username and password.'
+              />
+              :
+              <></>
+            } 
             <Form>
               <Form.Field>
                 <label>Username</label>

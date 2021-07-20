@@ -4,7 +4,6 @@ import { Button, Container, Form, Header, Icon, Select } from 'semantic-ui-react
 import jsonwebtoken from 'jsonwebtoken'
 
 const TransactionForm = () => {
-
   const consumableId = useParams().id
   const [currentAgent, setCurrentAgent] = useState([])
   const [recipient, setRecipient] = useState([])
@@ -61,8 +60,6 @@ const TransactionForm = () => {
   const handleSubmit = (e) => { 
     e.preventDefault()
     
-
-
     let agent = `${currentAgent.firstname} ${currentAgent.lastname}`
 
     const transaction = { 

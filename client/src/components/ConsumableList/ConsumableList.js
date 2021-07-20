@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Container, Table, Icon } from 'semantic-ui-react'
 import Consumable from '../Comsumable/Consumable'
+import jsonwebtoken from 'jsonwebtoken'
 
 const ConsumableList = () => {
 
@@ -11,6 +12,19 @@ const ConsumableList = () => {
     .then(res => res.json())
     .then(data => setConsumable(data))
   }, [])
+
+  const [isAdmin, setIsAdmin] = useState(false)
+
+  useEffect(() => {
+      if(localStorage.getItem('token') === null) return
+      const token = localStorage.getItem('token').split(" ")[1]
+      const agentRole = jsonwebtoken.decode(token).role
+  
+      if(agentRole === 'admin') {
+        setIsAdmin(true)
+      }
+    }, [])
+
 
   const deleteItem = (id) => { 
     fetch('http://localhost:3001/api/v1/items/' + id, { 
@@ -23,13 +37,18 @@ const ConsumableList = () => {
   return (
         <Container>
             <h3 style={{ textAlign: 'center'}}><Icon name='tag' />Item List</h3>
+            { isAdmin ? 
             <Button basic color='teal' animated>
-                <Link to="/items/create" style={{ color: '#00b5ad'}}><Button.Content visible>Create</Button.Content>
-                    <Button.Content hidden>
-                        <Icon name='arrow right' />
-                    </Button.Content>
-                </Link>
+              <Link to="/items/create" style={{ color: '#00b5ad'}}><Button.Content visible>Create</Button.Content>
+                  <Button.Content hidden>
+                      <Icon name='arrow right' />
+                  </Button.Content>
+              </Link>
             </Button>
+            :
+            <></>
+            }
+
             <Table color="brown" selectable>
                 <Table.Header>
                     <Table.Row>

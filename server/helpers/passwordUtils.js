@@ -32,11 +32,13 @@ const comparePassword = (pwd, hash) => {
 
 const issueJWT = (agent) => { 
   const _id = agent._id
+  const agentRole = agent.role
 
   const expiresIn = '1d'
 
   const payload = { 
     sub: _id,
+    role: agentRole,
     issueAt: Date.now()
   }
 

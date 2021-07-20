@@ -9,8 +9,6 @@ const CheckOutAsset = () => {
   const [selectedCustodian, setSelectedCustodian] = useState('No selected custodian')
   const [selectedAsset, setSelectedAsset] = useState([])
 
-  console.log(assetId);
-  console.log(selectedAsset);
   const selectedCustodianHandler = (e) => { 
     e.preventDefault()
 
