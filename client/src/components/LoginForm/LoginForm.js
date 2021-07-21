@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Button, Container, Form, Grid, Header, Message} from 'semantic-ui-react'
+import {Button, Container, Form, Grid, Message} from 'semantic-ui-react'
 import moment from 'moment'
 import './LoginForm.css'
 
@@ -8,7 +8,7 @@ const LoginForm = (props) => {
     username: '',
     password: ''
   })
-  const [loggedIn, setLoggedIn] = useState(false)
+  // const [loggedIn, setLoggedIn] = useState(false)
   const [validLogin, setValidLogin] = useState(true)
 
   const onChangeHandler = e => { 
@@ -55,7 +55,7 @@ const LoginForm = (props) => {
     
           localStorage.setItem('token', token)
           localStorage.setItem('expires', expires)
-          setLoggedIn(true)
+          // setLoggedIn(true)
           window.location.replace('/home')
           // props.history.push("/home")
         } else {
