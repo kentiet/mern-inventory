@@ -32,7 +32,9 @@ db.on('connected', () => {
   app.use('/api/v1/transactions', transactionRoutes)
   app.use('/ldap', ldapRoute)
 
-  
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'))
+  }
   app.listen(port, () => {
     console.log(`API is running on ${port}`);
   })  
