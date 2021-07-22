@@ -10,7 +10,7 @@ const AssetList = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:3001/api/v1/assets')
+        fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets')
             .then(res => {
                 return res.json()
             }).then(data => {
@@ -35,7 +35,7 @@ const AssetList = () => {
         
         setAssetList(assetList.filter(asset => asset._id !== id))
 
-        fetch('http://localhost:3001/api/v1/assets/' + id, {
+        fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets/' + id, {
             method: 'DELETE'
         })
             .then((data) => {

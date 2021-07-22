@@ -21,7 +21,7 @@ const AssetForm = (props) => {
   const id = props.assetId
 
   useEffect(() => { 
-    fetch('http://localhost:3001/api/v1/assets/' + id)
+    fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets/' + id)
     .then(res => { 
       return res.json()
     })
@@ -47,7 +47,7 @@ const AssetForm = (props) => {
     }
 
     if(isEditing) { 
-      fetch('http://localhost:3001/api/v1/assets/'+ id, {
+      fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets/'+ id, {
         method: 'PUT',
         headers: {
           'Content-type': 'application/json'
@@ -57,7 +57,7 @@ const AssetForm = (props) => {
         .then(() => console.log(data))
         .catch(err => console.error(err))
     } else { 
-      fetch('http://localhost:3001/api/v1/assets', {
+      fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets', {
         method: 'POST',
         headers: {
           'Content-type': 'application/json'

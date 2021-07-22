@@ -33,7 +33,7 @@ db.on('connected', () => {
   app.use('/ldap', ldapRoute)
 
   
-  app.listen(port, () => {
+  app.listen(port || 3001, () => {
     console.log(`API is running on ${port}`);
   })  
 })

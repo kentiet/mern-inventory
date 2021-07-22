@@ -19,7 +19,7 @@ const TransactionForm = () => {
   const {  note, quantity } = transaction
 
   useEffect(() => { 
-    fetch('http://localhost:3001/ldap')
+    fetch('https://mern-inventory-api.herokuapp.com/ldap')
     .then(res => res.json())
     .then(data => data.map((user, i) => { 
         return { text: user.cn, value: user.cn , key: i}
@@ -29,7 +29,7 @@ const TransactionForm = () => {
   }, [])
 
   useEffect(() => { 
-    fetch(`http://localhost:3001/api/v1/items/${consumableId}`)
+    fetch(`https://mern-inventory-api.herokuapp.com/api/v1/items/${consumableId}`)
     .then(res => res.json())
     .then(data => { 
       setSelectedItem(data)
@@ -39,7 +39,7 @@ const TransactionForm = () => {
   const token = localStorage.getItem('token').split(" ")[1]
   const agentId = jsonwebtoken.decode(token).sub
   useEffect(() => { 
-    fetch(`http://localhost:3001/api/v1/agents/${agentId}`)
+    fetch(`https://mern-inventory-api.herokuapp.com/api/v1/agents/${agentId}`)
     .then(res => res.json())
     .then(data => {
       setCurrentAgent(data)
@@ -70,7 +70,7 @@ const TransactionForm = () => {
       consumable: selectedItem.name
     }
 
-    fetch(`http://localhost:3001/api/v1/transactions/${consumableId}`, { 
+    fetch(`https://mern-inventory-api.herokuapp.com/api/v1/transactions/${consumableId}`, { 
       method: 'POST',
       headers: { 
         'Content-Type' : 'application/json'
@@ -86,7 +86,7 @@ const TransactionForm = () => {
 
     console.log(updatedItem)
 
-    fetch(`http://localhost:3001/api/v1/items/${consumableId}`, { 
+    fetch(`https://mern-inventory-api.herokuapp.com/api/v1/items/${consumableId}`, { 
       method: 'PUT',
       headers: { 
         'Content-Type' : 'application/json'

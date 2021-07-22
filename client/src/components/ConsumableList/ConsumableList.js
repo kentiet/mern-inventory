@@ -8,7 +8,7 @@ const ConsumableList = () => {
 
   const [consumable, setConsumable] = useState([])
   useEffect(() => {
-    fetch('http://localhost:3001/api/v1/items')
+    fetch('https://mern-inventory-api.herokuapp.com/api/v1/items')
     .then(res => res.json())
     .then(data => setConsumable(data))
   }, [])
@@ -27,7 +27,7 @@ const ConsumableList = () => {
 
 
   const deleteItem = (id) => { 
-    fetch('http://localhost:3001/api/v1/items/' + id, { 
+    fetch('https://mern-inventory-api.herokuapp.com/api/v1/items/' + id, { 
       method: 'DELETE'
     }).then(() => { 
       setConsumable(consumable.filter(c => c._id !== id))

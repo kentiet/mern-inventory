@@ -6,7 +6,7 @@ const TransactionsList = () => {
     const [transactions, setTransactions] = useState([])
 
     useEffect(() => { 
-      fetch('http://localhost:3001/api/v1/transactions')
+      fetch('https://mern-inventory-api.herokuapp.com/api/v1/transactions')
       .then(res => res.json())
       .then(data => { 
         setTransactions(data)

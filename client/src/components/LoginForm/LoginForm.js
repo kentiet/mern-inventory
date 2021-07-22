@@ -39,7 +39,7 @@ const LoginForm = (props) => {
     
     e.preventDefault()
 
-    fetch('http://localhost:3001/api/v1/agents/login', { 
+    fetch('https://mern-inventory-api.herokuapp.com/api/v1/agents/login', { 
       method: 'POST',
       headers: {
         'Content-type': 'application/json'

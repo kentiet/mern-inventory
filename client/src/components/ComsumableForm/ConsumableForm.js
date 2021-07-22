@@ -20,7 +20,7 @@ const ConsumableForm = (props) => {
   const {id} = props.id
 
   useEffect(() => { 
-    fetch('http://localhost:3001/api/v1/items/' + id)
+    fetch('https://mern-inventory-api.herokuapp.com/api/v1/items/' + id)
     .then(res => { 
       return res.json()
     })
@@ -58,7 +58,7 @@ const ConsumableForm = (props) => {
     
 
     if(isEditing) { 
-      fetch('http://localhost:3001/api/v1/items/' + id, { 
+      fetch('https://mern-inventory-api.herokuapp.com/api/v1/items/' + id, { 
         method: 'PUT',
         headers: { 
           'Content-type': 'application/json'
@@ -68,7 +68,7 @@ const ConsumableForm = (props) => {
       .then()
       .catch(err => console.error(err))
     } else { 
-      fetch('http://localhost:3001/api/v1/items', { 
+      fetch('https://mern-inventory-api.herokuapp.com/api/v1/items', { 
         method: 'POST',
         headers: { 
           'Content-type': 'application/json'

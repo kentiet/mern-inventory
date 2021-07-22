@@ -24,7 +24,7 @@ const CheckOutAsset = () => {
       direction: 'out'
     }
 
-    fetch(`http://localhost:3001/api/v1/assets/${assetId}`, { 
+    fetch(`https://mern-inventory-api.herokuapp.com/api/v1/assets/${assetId}`, { 
       method: 'PUT',
       headers: { 
         "Content-Type": "application/json"
@@ -36,7 +36,7 @@ const CheckOutAsset = () => {
 
   }
   useEffect(() => { 
-    fetch('http://localhost:3001/ldap')
+    fetch('https://mern-inventory-api.herokuapp.com/ldap')
     .then(res => res.json())
     .then(data => data.map((user, i) => { 
         return { text: user.cn, value: user.cn , key: i}
@@ -46,7 +46,7 @@ const CheckOutAsset = () => {
   }, [])
 
   useEffect(() => { 
-    fetch(`http://localhost:3001/api/v1/assets/${assetId}`)
+    fetch(`https://mern-inventory-api.herokuapp.com/api/v1/assets/${assetId}`)
     .then(res => res.json())
     .then(data => { 
       setSelectedAsset(data)
