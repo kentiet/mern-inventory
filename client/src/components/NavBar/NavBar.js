@@ -42,7 +42,7 @@ class NavBar extends Component {
         } else { 
         return (
                 <Menu pointing secondary>
-                    <NavLink to="/home">
+                    <NavLink to="/">
                         <Menu.Item
                             name='home'
                             active={activeItem === 'home'}

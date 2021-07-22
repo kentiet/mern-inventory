@@ -54,7 +54,7 @@ const LoginForm = (props) => {
           localStorage.setItem('token', token)
           localStorage.setItem('expires', expires)
           // setLoggedIn(true)
-          window.location.replace('/home')
+          window.location.replace('/')
           // props.history.push("/home")
         } else {
           setValidLogin(false)

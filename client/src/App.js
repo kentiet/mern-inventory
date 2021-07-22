@@ -45,7 +45,7 @@ function App() {
           <NavBar isAuth={isLogin}/>
           <br />
           <Switch>
-            <Route path="/home" exact component={Home}/>
+            <Route path="/" exact component={Home}/>
             <ProtectedRoute path="/assets" exact component={AssetList} isAuth={isLogin}/>
             <AdminRoute path="/assets/create" exact component={AddEditAsset} errorComponent={ErrorPage} isAuth={isLogin} isAdmin={isAdmin}/>
             <AdminRoute path="/assets/:id/edit" exact component={AddEditAsset} errorComponent={ErrorPage} isAuth={isLogin} isAdmin={isAdmin}/>
