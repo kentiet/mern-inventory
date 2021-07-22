@@ -10,11 +10,10 @@ class NavBar extends Component {
         this.state = { 
             activeItem: 'home',
         }
-        console.log(props.isAuth);
     }
 
 
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+    handleItemClick = ({ name }) => this.setState({ activeItem: name })
 
     handleLogOut = (e) => {
         e.preventDefault()

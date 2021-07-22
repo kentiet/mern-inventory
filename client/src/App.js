@@ -3,7 +3,6 @@ import NavBar from './components/NavBar/NavBar'
 import AssetList from './components/AssetList/AssetList'
 import Home from './pages/home-page/home-page';
 import {
-  Route,
   Switch,
 } from "react-router-dom";
 import AddEditAsset from './components/AddEditAsset/AddEditAsset';
