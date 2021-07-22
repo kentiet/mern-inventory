@@ -20,7 +20,7 @@ const HomeItem = ({ itemName, path }) => {
   useEffect(() => { 
     let myColor = randomPickColor()
     setPickColor(myColor)
-  }, [pickColor, colors])
+  })
 
   return (
     <Link to={path}>
