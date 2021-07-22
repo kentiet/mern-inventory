@@ -3,6 +3,7 @@ import NavBar from './components/NavBar/NavBar'
 import AssetList from './components/AssetList/AssetList'
 import Home from './pages/home-page/home-page';
 import {
+  Route,
   Switch,
 } from "react-router-dom";
 import AddEditAsset from './components/AddEditAsset/AddEditAsset';
@@ -44,7 +45,7 @@ function App() {
           <NavBar isAuth={isLogin}/>
           <br />
           <Switch>
-            <ProtectedRoute path="/home" exact component={Home} isAuth={isLogin}/>
+            <Route path="/home" exact component={Home}/>
             <ProtectedRoute path="/assets" exact component={AssetList} isAuth={isLogin}/>
             <AdminRoute path="/assets/create" exact component={AddEditAsset} errorComponent={ErrorPage} isAuth={isLogin} isAdmin={isAdmin}/>
             <AdminRoute path="/assets/:id/edit" exact component={AddEditAsset} errorComponent={ErrorPage} isAuth={isLogin} isAdmin={isAdmin}/>
@@ -62,8 +63,10 @@ function App() {
   } else {
     return (
       <Container>
+          <Route path="/" exact component={Home}/>
+          <Route path="/login" exact component={LoginPage}/>
           {/* <NavBar isAuth={isLogin}/> */}
-          <LoginPage />
+          {/* <LoginPage /> */}
       </Container>
     )
   }
