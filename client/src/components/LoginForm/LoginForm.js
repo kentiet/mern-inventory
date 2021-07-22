@@ -14,7 +14,6 @@ const LoginForm = (props) => {
   const onChangeHandler = e => { 
     e.preventDefault()
     const { name , value } = e.target
-    console.log(name, value)
 
     setLoginUser({ ...loginUser, 
       [name] : value })
@@ -48,7 +47,6 @@ const LoginForm = (props) => {
     })
     .then((res) => res.json())
     .then(data => {
-        console.log('login data', data);
         if(data.success) {
           const { token, expiresIn } = data
           const expires = moment().add(expiresIn)

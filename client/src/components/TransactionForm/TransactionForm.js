@@ -84,8 +84,6 @@ const TransactionForm = () => {
       quantity: Number.parseInt(selectedItem.quantity) - quantity
     }
 
-    console.log(updatedItem)
-
     fetch(`https://mern-inventory-api.herokuapp.com/api/v1/items/${consumableId}`, { 
       method: 'PUT',
       headers: { 

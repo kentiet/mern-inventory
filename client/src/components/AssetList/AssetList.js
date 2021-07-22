@@ -40,7 +40,6 @@ const AssetList = () => {
         })
             .then((data) => {
                 console.log(`Delete the asset with id ${id}`);
-                console.log(data)
             })
             .catch(err => console.error(err))
     }
