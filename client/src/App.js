@@ -63,6 +63,7 @@ function App() {
   } else {
     return (
       <Container>
+          <NavBar isAuth={isLogin}/>
           <Route path="/" exact component={Home}/>
           <Route path="/login" exact component={LoginPage}/>
           {/* <NavBar isAuth={isLogin}/> */}

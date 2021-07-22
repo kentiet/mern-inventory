@@ -30,7 +30,7 @@ class NavBar extends Component {
         if(this.props.isAuth === null || "") { 
             return (
                 <Menu pointing secondary>
-                    <NavLink to="/">
+                    <NavLink to="/login">
                         <Menu.Item
                             name='Login'
                             active={activeItem === 'Login'}

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from 'semantic-ui-react';
 
-const HomeItem = ({ itemName, path }) => {
+const HomeItem = ({ itemName, path, isAuth }) => {
   const [pickColor, setPickColor] = useState('red');
-  
+
   useEffect(() => {
     const colors = [
       'red',
@@ -28,11 +28,11 @@ const HomeItem = ({ itemName, path }) => {
     setPickColor(colors[picked]);
   }, []);
 
-  return (
-    <Link to={path}>
-      <Card color={pickColor} href={path} header={itemName} />
-    </Link>
-  );
+    return (
+      <Link to={isAuth === null ? '/login' : path}>
+        <Card color={pickColor} header={itemName} />
+      </Link>
+    );
 };
 
 export default HomeItem;
