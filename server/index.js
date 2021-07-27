@@ -31,7 +31,6 @@ db.on('connected', () => {
   app.use('/api/v1/agents', agentRoutes)
   app.use('/api/v1/transactions', transactionRoutes)
   app.use('/ldap', ldapRoute)
-
   
   app.listen(port || 3001, () => {
     console.log(`API is running on ${port}`);
