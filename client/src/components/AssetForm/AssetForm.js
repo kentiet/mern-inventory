@@ -50,7 +50,8 @@ const AssetForm = (props) => {
       fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets/'+ id, {
         method: 'PUT',
         headers: {
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
+          "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify(data)
       })
@@ -60,7 +61,8 @@ const AssetForm = (props) => {
       fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets', {
         method: 'POST',
         headers: {
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
+          "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify(data)
       })
@@ -120,14 +122,14 @@ const AssetForm = (props) => {
                 name='price'
                 placeholder='Price' />
             </Form.Field>
-            <Form.Field>
+            { isEditing ? <Form.Field>
               <label>Custodian</label>
               <input
                 name='custodian'
                 value={custodian}
                 onChange={onChangeHandler}
                 placeholder='Custodian' />
-            </Form.Field>
+            </Form.Field> : <></>}
             <Form.Field>
               <label>Vendor</label>
               <input
@@ -136,14 +138,14 @@ const AssetForm = (props) => {
                 onChange={onChangeHandler}
                 placeholder='Vendor' />
             </Form.Field>
-            <Form.Field>
+            { isEditing ? <Form.Field>
               <label>In/Out</label>
               <input
                 name='direction'
                 value={direction}
                 onChange={onChangeHandler}
                 placeholder='Direction' />
-            </Form.Field>
+            </Form.Field> : <></>}
             <Button.Group>
               <Link to='/assets/'><Button color='red'>Cancel</Button></Link>
               <Button.Or />

@@ -61,7 +61,8 @@ const ConsumableForm = (props) => {
       fetch('https://mern-inventory-api.herokuapp.com/api/v1/items/' + id, { 
         method: 'PUT',
         headers: { 
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
+          "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify(data)
       })
@@ -71,7 +72,8 @@ const ConsumableForm = (props) => {
       fetch('https://mern-inventory-api.herokuapp.com/api/v1/items', { 
         method: 'POST',
         headers: { 
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
+          "Access-Control-Allow-Origin": "*"
         },
         body: JSON.stringify(data)
       })

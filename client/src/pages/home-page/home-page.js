@@ -25,7 +25,6 @@ const Home = () => {
           <Grid.Row columns={2}>
               {
               items.map((item, key) => { 
-                console.log(key)
                 return (
                 <Grid.Column stretched>
                   <HomeItem 

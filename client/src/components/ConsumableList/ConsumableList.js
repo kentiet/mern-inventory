@@ -8,7 +8,9 @@ const ConsumableList = () => {
 
   const [consumable, setConsumable] = useState([])
   useEffect(() => {
-    fetch('https://mern-inventory-api.herokuapp.com/api/v1/items')
+    fetch('https://mern-inventory-api.herokuapp.com/api/v1/items', { 
+      headers: {"Access-Control-Allow-Origin": "*"}
+    })
     .then(res => res.json())
     .then(data => setConsumable(data))
   }, [])

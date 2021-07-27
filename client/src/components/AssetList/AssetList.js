@@ -10,7 +10,9 @@ const AssetList = () => {
 
 
     useEffect(() => {
-        fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets')
+        fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets', { 
+            headers: {"Access-Control-Allow-Origin": "*"}
+          })
             .then(res => {
                 return res.json()
             }).then(data => {
@@ -36,7 +38,8 @@ const AssetList = () => {
         setAssetList(assetList.filter(asset => asset._id !== id))
 
         fetch('https://mern-inventory-api.herokuapp.com/api/v1/assets/' + id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {"Access-Control-Allow-Origin": "*"}
         })
             .then((data) => {
                 console.log(`Delete the asset with id ${id}`);
