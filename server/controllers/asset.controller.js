@@ -35,9 +35,9 @@ const create = (req, res) => {
     description: req.body.description,
     assetNumber: req.body.assetNumber,
     price: req.body.price,
-    custodian: req.body.custodian,
+    custodian: 'Available',
     vendor: req.body.vendor,
-    direction: req.body.direction
+    direction: 'in'
   })
 
   Asset.create(asset)
