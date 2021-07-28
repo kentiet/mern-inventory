@@ -40,6 +40,8 @@ const LoginForm = (props) => {
 
     fetch('https://mern-inventory-api.herokuapp.com/api/v1/agents/login', { 
       method: 'POST',
+      mode: 'cors',
+      credentials: 'include',
       headers: {
         'Content-type': 'application/json',
         "Access-Control-Allow-Origin": "*"
