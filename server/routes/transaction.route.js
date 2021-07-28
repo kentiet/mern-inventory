@@ -1,6 +1,5 @@
 import express from 'express'
 import { findAll, getById, create, update, remove } from '../controllers/transaction.controller.js'
-import db from '../helpers/db.js'
 
 const transactionRoutes = express.Router()
 
